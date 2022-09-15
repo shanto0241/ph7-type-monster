@@ -9,6 +9,9 @@ function addHistory(questionText, timeTaken, errorCount) {
   <div>
   <p>You took: <span class="bold">${Math.round(timeTaken)}</span> seconds</p>
   <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p class = "modal-inner">You Type <span class="bold">${Math.round(
+      perSecondsCharacterCount
+    )}</span> characters per seconds</p>
   </div>
   `;
 
@@ -33,8 +36,12 @@ function displayHistory() {
   <h3>${test.questionText}</h3>
   <p>You took: <span class="bold">${test.timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
+    <p class = "modal-inner">You Type <span class="bold">${Math.round(
+      test.perSecondsCharacterCount
+    )}</span> characters per seconds</p>
   `;
 
     histories.appendChild(newRow);
   });
 }
+localStorage.clear();

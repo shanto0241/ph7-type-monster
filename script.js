@@ -77,7 +77,6 @@ const gameOver = () => {
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
   const timeTaken = (finishTime - startTime) / 1000;
-  console.log(timeTaken, questionLength);
   perSecondsCharacterCount = questionLength / timeTaken;
   // show result modal
   resultModal.style.top = "15%";
@@ -93,9 +92,11 @@ const gameOver = () => {
   // show result
   resultModal.innerHTML += `
     <h1>Finished!</h1>
-    <p>You took: <span class="bold">${timeTaken}</span> seconds</p>
-    <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
-    <p>You Take <span class="bold">${Math.round(
+    <p class = "modal-inner">You took: <span class="bold">${Math.round(
+      timeTaken
+    )}</span> seconds</p>
+    <p class = "modal-inner">You made <span class="bold red">${errorCount}</span> mistakes</p>
+    <p class = "modal-inner">You Type <span class="bold">${Math.round(
       perSecondsCharacterCount
     )}</span> characters per seconds</p>
     <button onclick="closeModal()">Close</button>

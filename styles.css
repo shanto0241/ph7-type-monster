@@ -80,6 +80,9 @@ body {
   color: white;
   margin: 10px 0;
 }
+.modal-inner {
+  margin-bottom: 5px;
+}
 
 .green {
   color: #9dffad;
@@ -140,10 +143,18 @@ button {
   border: 2px solid #9dffad;
   cursor: pointer;
 }
+.blog {
+  text-decoration: none;
+  color: white;
+}
+.blog:hover {
+  color: cyan;
+}
 
 #histories {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
   justify-content: space-around;
 }
 
