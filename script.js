@@ -14,13 +14,16 @@ let questionLength = 0;
 let perSecondsCharacterCount = 0;
 
 // Load and display question
-fetch("./texts.json")
-  .then((res) => res.json())
-  .then((data) => {
-    questionText = data[Math.floor(Math.random() * data.length)];
-    questionLength = questionText.length;
-    question.innerHTML = questionText;
-  });
+const getQuestions = () => {
+  fetch("./texts.json")
+    .then((res) => res.json())
+    .then((data) => {
+      questionText = data[Math.floor(Math.random() * data.length)];
+      questionLength = questionText.length;
+      question.innerHTML = questionText;
+    });
+};
+getQuestions();
 
 // checks the user typed character and displays accordingly
 const typeController = (e) => {
@@ -98,7 +101,7 @@ const gameOver = () => {
     <p class = "modal-inner">You made <span class="bold red">${errorCount}</span> mistakes</p>
     <p class = "modal-inner">You Type <span class="bold">${Math.round(
       perSecondsCharacterCount
-    )}</span> characters per seconds</p>
+    )}</span> characters per second</p>
     <button onclick="closeModal()">Close</button>
   `;
 
@@ -116,6 +119,7 @@ const gameOver = () => {
 const closeModal = () => {
   modalBackground.classList.toggle("hidden");
   resultModal.classList.toggle("hidden");
+  getQuestions();
 };
 
 const start = () => {

@@ -11,7 +11,7 @@ function addHistory(questionText, timeTaken, errorCount) {
   <p>You made <span class="bold red">${errorCount}</span> mistakes</p>
     <p class = "modal-inner">You Type <span class="bold">${Math.round(
       perSecondsCharacterCount
-    )}</span> characters per seconds</p>
+    )}</span> characters per second</p>
   </div>
   `;
 
@@ -29,6 +29,7 @@ function displayHistory() {
   const previousTests = JSON.parse(localStorage.getItem("testHistory")) || [];
 
   previousTests.forEach((test) => {
+    const perSecondsCharacterCount = test.questionText.length / test.timeTaken;
     const newRow = document.createElement("div");
     newRow.classList.add("card");
 
@@ -37,8 +38,8 @@ function displayHistory() {
   <p>You took: <span class="bold">${test.timeTaken}</span> seconds</p>
     <p>You made <span class="bold red">${test.errorCount}</span> mistakes</p>
     <p class = "modal-inner">You Type <span class="bold">${Math.round(
-      test.perSecondsCharacterCount
-    )}</span> characters per seconds</p>
+      perSecondsCharacterCount
+    )}</span> characters per second</p>
   `;
 
     histories.appendChild(newRow);
